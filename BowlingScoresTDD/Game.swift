@@ -10,12 +10,12 @@ import Foundation
 final class Game {
     private var rolls: [Int] = Array(repeating: 0, count: 21)
     private var currentRoll = 0
-    
+
     func roll(_ pins: Int) {
         rolls[currentRoll] = pins
         currentRoll += 1
     }
-    
+
     func parse(rolls: String) {
         var copy = rolls
         while !copy.isEmpty {
@@ -33,13 +33,13 @@ final class Game {
             }
         }
     }
-    
+
     private func isSpare(_ roll: Int) -> Bool { frameSum(roll) == 10 }
     private func isStrike(_ roll: Int) -> Bool { rolls[roll] == 10 }
     private func strikeBonus(_ roll: Int) -> Int { rolls[roll + 1] + rolls[roll + 2] }
     private func spareBonus(_ roll: Int) -> Int { rolls[roll + 2] }
     private func frameSum(_ roll: Int) -> Int { rolls[roll] + rolls[roll + 1] }
-    
+
     func score() -> Int {
         var score = 0
         var roll = 0
