@@ -34,12 +34,12 @@ final class GameTests: XCTestCase {
         XCTAssertEqual(game.score(), 20)
     }
     
-//    func testOneSpare() {
-//        game.roll(5)
-//        game.roll(5)
-//        game.roll(3)
-//        rollMany(pins: 0, times: 17)
-//        XCTAssertEqual(game.score(), 16)
-//    }
+    func testOneSpare() {
+        game.roll(5)
+        game.roll(5)
+        game.roll(3)
+        rollMany(pins: 0, times: 17)
+        XCTAssertEqual(game.score(), 16)
+    }
     
 }
