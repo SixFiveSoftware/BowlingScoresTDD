@@ -42,4 +42,43 @@ final class GameTests: XCTestCase {
         XCTAssertEqual(game.score(), 16)
     }
     
+    func testOneStrike() {
+        game.roll(10)
+        game.roll(4)
+        game.roll(3)
+        rollMany(pins: 0, times: 16)
+        XCTAssertEqual(game.score(), 24)
+    }
+    
+    func testPerfectGame() {
+        rollMany(pins: 10, times: 12)
+        XCTAssertEqual(game.score(), 300)
+    }
+    
+    func testEndingSpare() {
+        rollMany(pins: 10, times: 10)
+        game.roll(9)
+        game.roll(1)
+        XCTAssertEqual(game.score(), 289)
+    }
+    
+    func test267() {
+        game.parse(rolls: "XXXX9/8/XXXXXX")
+        XCTAssertEqual(game.score(), 267)
+    }
+
+    func test227() {
+        game.parse(rolls: "819/XXX8/X8/XXXX")
+        XCTAssertEqual(game.score(), 227)
+    }
+    
+    func test174() {
+        game.parse(rolls: "X819/X8/X8/9/817/X")
+        XCTAssertEqual(game.score(), 174)
+    }
+    
+    func test299() {
+        game.parse(rolls: "XXXXXXXXXXX9")
+        XCTAssertEqual(game.score(), 299)
+    }
 }
